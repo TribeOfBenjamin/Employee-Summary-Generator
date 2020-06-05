@@ -19,17 +19,17 @@ inquirer
     .prompt([
         {
             type: "input",
-            name: "managerName",
-            message: "What is you manager's name?"
+            name: "nameMang",
+            message: "What is your manager's name?"
         },
         {
             type: "input",
-            name: "id",
+            name: "idMang",
             message: "What is your manager's ID?"
         },
         {
             type: "input",
-            name: "email",
+            name: "emailMang",
             message: "What is your manager's email?"
         },
         {
@@ -41,12 +41,80 @@ inquirer
             type: "list",
             name: "addMember",
             message: "Which type of team member would you like to add?",
-            choices: ["Engineer", "Intern"]
+            choices: ["Engineer", "Intern", "I'm finished adding members"]
         }
     ])
     .then(function(answers) {
-        //console.log(answers);
+        if ( answers.addMember === "Engineer" ) {
+            console.log("You chose engineer.");
+            inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        name: "nameEng",
+                        message: "What is your engineer's name?"
+                    },
+                    {
+                        type: "input",
+                        name: "idEng",
+                        message: "What is your engineer's ID?"
+                    },
+                    {
+                        type: "input",
+                        name: "emailEng",
+                        message: "What is your engineer's email?"
+                    },
+                    {
+                        type: "input",
+                        name: "gitHub",
+                        message: "What is your engineer's GitHub username?"
+                    },
+                    {
+                        type: "list",
+                        name: "addMember",
+                        message: "Which type of team member would you like to add?",
+                        choices: ["Engineer", "Intern", "I'm finished adding members"]
+                    }
+                ])
+        } else if ( answers.addMember === "Intern" ) {
+            console.log("You chose intern.");
+            inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        name: "nameInt",
+                        message: "What is your intern's name?"
+                    },
+                    {
+                        type: "input",
+                        name: "idInt",
+                        message: "What is your intern's ID?"
+                    },
+                    {
+                        type: "input",
+                        name: "emailInt",
+                        message: "What is your intern's email?"
+                    },
+                    {
+                        type: "input",
+                        name: "school",
+                        message: "What is your intern's school?"
+                    },
+                    {
+                        type: "list",
+                        name: "addMember",
+                        message: "Which type of team member would you like to add?",
+                        choices: ["Engineer", "Intern", "I'm finished adding members"]
+                    }
+                ])
+        } else {
+            console.log("Your team has been created!");
+            return;
+        }
     })
+    .catch(function(err) {
+        console.log(err);
+    }) 
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
