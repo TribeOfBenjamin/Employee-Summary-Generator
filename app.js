@@ -15,8 +15,9 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 console.log("Please build your team...")
 
-inquirer
-    .prompt([
+
+function promptManager() {
+    return inquirer.prompt([
         {
             type: "input",
             name: "nameMang",
@@ -36,14 +37,34 @@ inquirer
             type: "input",
             name: "office",
             message: "What is your manager's office number?"
-        },
+        }
+    ]);
+    
+}
+/*
+function promptNextMemberType() {
+    return inquirer.prompt([
         {
             type: "list",
             name: "addMember",
             message: "Which type of team member would you like to add?",
             choices: ["Engineer", "Intern", "I'm finished adding members"]
         }
-    ])
+    ]);
+}
+*/
+    // THIS ONLY CYCLES THROUGH ONCE GIVEN THE NATURE OF .THEN AND IF/THEN STATEMENTS (I THINK)
+promptManager()
+    .then(function promptNextMemberType() {
+        return inquirer.prompt([
+            {
+                type: "list",
+                name: "addMember",
+                message: "Which type of team member would you like to add?",
+                choices: ["Engineer", "Intern", "I'm finished adding members"]
+            }
+        ]);
+    })
     .then(function(answers) {
         if ( answers.addMember === "Engineer" ) {
             console.log("You chose engineer.");
@@ -112,6 +133,7 @@ inquirer
             return;
         }
     })
+    //.then(promptNextMemberType())
     .catch(function(err) {
         console.log(err);
     }) 
