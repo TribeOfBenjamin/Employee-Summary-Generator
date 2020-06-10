@@ -1,0 +1,12 @@
+h1, h2 {
+    font-family: 'Permanent Marker', cursive;
+    color: white;
+}
+
+.team-heading {
+    background-color: black;
+}
+
+h3, li {
+    font-family: 'Raleway', sans-serif;
+}

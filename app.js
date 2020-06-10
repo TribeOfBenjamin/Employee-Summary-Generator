@@ -60,7 +60,7 @@ function promptManager() {
                     const renderVar = render(employees);
                     fs.writeFile(outputPath, renderVar, (err) => {
                         if (err) throw err;
-                        console.log("Your team page has been created!");
+                        console.log("Your team's page has been created!");
                       })
                     break;
                 default:
@@ -119,7 +119,7 @@ function promptEngineer() {
                     const renderVar = render(employees);
                     fs.writeFile(outputPath, renderVar, (err) => {
                         if (err) throw err;
-                        console.log("Your team page has been created!");
+                        console.log("Your team's page has been created!");
                       })
                     break;
                 default:
@@ -179,7 +179,7 @@ function promptIntern() {
                     const renderVar = render(employees);
                     fs.writeFile(outputPath, renderVar, (err) => {
                         if (err) throw err;
-                        console.log("Your team page has been created!");
+                        console.log("Your team's page has been created!");
                       })
                     break;
                 default:

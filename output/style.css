@@ -1,0 +1,32 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    color: white;
+}
+
+h2 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.team-heading {
+    background-color: rgb(17, 17, 141);
+}
+
+h3, li {
+    font-family: 'Raleway', sans-serif;
+}
+
+.card-header {
+    background-color: #f7f7f7;
+}
+
+.card-body {
+    background-color: rgb(17, 17, 141);
+}
+
+.email {
+    background-color: #f7f7f7;
+}
