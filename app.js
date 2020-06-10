@@ -9,15 +9,21 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-
-
+// ^ Is a function which takes one argument which is an array of employees
+// So I need to make an array of employees and pass that into the render function
+const employees = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 console.log("Please build your team...")
 
+// If they want to cont.
+//      do another person ie ask the q again
+// If not
+//      run render
+
 
 function promptManager() {
-    return inquirer.prompt([
+    inquirer.prompt([
         {
             type: "input",
             name: "nameMang",
@@ -37,106 +43,146 @@ function promptManager() {
             type: "input",
             name: "officeNumber",
             message: "What is your manager's office number?"
-        }
-    ]);
-    
-}
-/*
-function promptNextMemberType() {
-    return inquirer.prompt([
+        },
         {
             type: "list",
             name: "addMember",
             message: "Which type of team member would you like to add?",
             choices: ["Engineer", "Intern", "I'm finished adding members"]
         }
-    ]);
+    ])
+        .then(answer => {
+            //console.log(answer);
+            const manager = new Manager(answer.nameMang, answer.idMang, answer.emailMang, answer.officeNumber);
+            employees.push(manager);
+            switch (answer.addMember) {
+                case "Engineer":
+                    promptEngineer();
+                    break;
+                case "Intern":
+                    promptIntern();
+                    break;
+                case "I'm finished adding members":
+                    render(employees);
+                    break;
+                default:
+                    // do other stuff
+                    break;
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
-*/
-    // THIS ONLY CYCLES THROUGH ONCE GIVEN THE NATURE OF .THEN AND IF/THEN STATEMENTS (I THINK)
-promptManager()
-    .then(function promptNextMemberType() {
-        return inquirer.prompt([
+
+function promptEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "nameEng",
+            message: "What is your engineer's name?"
+        },
+        {
+            type: "input",
+            name: "idEng",
+            message: "What is your engineer's ID?"
+        },
+        {
+            type: "input",
+            name: "emailEng",
+            message: "What is your engineer's email?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is your engineer's GitHub username?"
+        },
+        {
+            type: "list",
+            name: "addMember",
+            message: "Which type of team member would you like to add?",
+            choices: ["Engineer", "Intern", "I'm finished adding members"]
+        }
+    ])
+        .then(answer => {
+            //console.log(answer);
+            const engineer = new Engineer(answer.nameEng, answer.idEng, answer.emailEng, answer.github);
+            employees.push(engineer);
+            switch (answer.addMember) {
+                case "Engineer":
+                    promptEngineer();
+                    break;
+                case "Intern":
+                    promptIntern();
+                    break;
+                case "I'm finished adding members":
+                    render(employees);
+                    break;
+                default:
+                    // do other stuff
+                    break;
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+}
+
+function promptIntern() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "nameInt",
+                message: "What is your intern's name?"
+            },
+            {
+                type: "input",
+                name: "idInt",
+                message: "What is your intern's ID?"
+            },
+            {
+                type: "input",
+                name: "emailInt",
+                message: "What is your intern's email?"
+            },
+            {
+                type: "input",
+                name: "school",
+                message: "What is your intern's school?"
+            },
             {
                 type: "list",
                 name: "addMember",
                 message: "Which type of team member would you like to add?",
                 choices: ["Engineer", "Intern", "I'm finished adding members"]
             }
-        ]);
-    })
-    .then(function(answers) {
-        if ( answers.addMember === "Engineer" ) {
-            console.log("You chose engineer.");
-            inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "nameEng",
-                        message: "What is your engineer's name?"
-                    },
-                    {
-                        type: "input",
-                        name: "idEng",
-                        message: "What is your engineer's ID?"
-                    },
-                    {
-                        type: "input",
-                        name: "emailEng",
-                        message: "What is your engineer's email?"
-                    },
-                    {
-                        type: "input",
-                        name: "github",
-                        message: "What is your engineer's GitHub username?"
-                    },
-                    {
-                        type: "list",
-                        name: "addMember",
-                        message: "Which type of team member would you like to add?",
-                        choices: ["Engineer", "Intern", "I'm finished adding members"]
-                    }
-                ])
-        } else if ( answers.addMember === "Intern" ) {
-            console.log("You chose intern.");
-            inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "nameInt",
-                        message: "What is your intern's name?"
-                    },
-                    {
-                        type: "input",
-                        name: "idInt",
-                        message: "What is your intern's ID?"
-                    },
-                    {
-                        type: "input",
-                        name: "emailInt",
-                        message: "What is your intern's email?"
-                    },
-                    {
-                        type: "input",
-                        name: "school",
-                        message: "What is your intern's school?"
-                    },
-                    {
-                        type: "list",
-                        name: "addMember",
-                        message: "Which type of team member would you like to add?",
-                        choices: ["Engineer", "Intern", "I'm finished adding members"]
-                    }
-                ])
-        } else {
-            console.log("Your team has been created!");
-            return;
-        }
-    })
-    //.then(promptNextMemberType())
-    .catch(function(err) {
-        console.log(err);
-    }) 
+        ])
+        .then(answer => {
+            //console.log(answer);
+            const intern = new Intern(answer.nameInt, answer.idInt, answer.emailInt, answer.school);
+            employees.push(intern);
+            switch (answer.addMember) {
+                case "Engineer":
+                    promptEngineer();
+                    break;
+                case "Intern":
+                    promptIntern();
+                    break;
+                case "I'm finished adding members":
+                    render(employees);
+                    break;
+                default:
+                    // do other stuff
+                    break;
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+}
+
+promptManager();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
