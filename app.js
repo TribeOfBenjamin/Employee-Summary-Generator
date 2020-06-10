@@ -9,18 +9,10 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-// ^ Is a function which takes one argument which is an array of employees
-// So I need to make an array of employees and pass that into the render function
+
 const employees = [];
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+
 console.log("Please build your team...")
-
-// If they want to cont.
-//      do another person ie ask the q again
-// If not
-//      run render
-
 
 function promptManager() {
     inquirer.prompt([
@@ -52,9 +44,11 @@ function promptManager() {
         }
     ])
         .then(answer => {
-            //console.log(answer);
+
             const manager = new Manager(answer.nameMang, answer.idMang, answer.emailMang, answer.officeNumber);
+
             employees.push(manager);
+
             switch (answer.addMember) {
                 case "Engineer":
                     promptEngineer();
@@ -63,10 +57,13 @@ function promptManager() {
                     promptIntern();
                     break;
                 case "I'm finished adding members":
-                    render(employees);
+                    const renderVar = render(employees);
+                    fs.writeFile(outputPath, renderVar, (err) => {
+                        if (err) throw err;
+                        console.log("Your team page has been created!");
+                      })
                     break;
                 default:
-                    // do other stuff
                     break;
             }
         })
@@ -105,9 +102,11 @@ function promptEngineer() {
         }
     ])
         .then(answer => {
-            //console.log(answer);
+
             const engineer = new Engineer(answer.nameEng, answer.idEng, answer.emailEng, answer.github);
+
             employees.push(engineer);
+
             switch (answer.addMember) {
                 case "Engineer":
                     promptEngineer();
@@ -117,9 +116,13 @@ function promptEngineer() {
                     break;
                 case "I'm finished adding members":
                     render(employees);
+                    const renderVar = render(employees);
+                    fs.writeFile(outputPath, renderVar, (err) => {
+                        if (err) throw err;
+                        console.log("Your team page has been created!");
+                      })
                     break;
                 default:
-                    // do other stuff
                     break;
             }
         })
@@ -159,9 +162,11 @@ function promptIntern() {
             }
         ])
         .then(answer => {
-            //console.log(answer);
+
             const intern = new Intern(answer.nameInt, answer.idInt, answer.emailInt, answer.school);
+
             employees.push(intern);
+
             switch (answer.addMember) {
                 case "Engineer":
                     promptEngineer();
@@ -171,9 +176,13 @@ function promptIntern() {
                     break;
                 case "I'm finished adding members":
                     render(employees);
+                    const renderVar = render(employees);
+                    fs.writeFile(outputPath, renderVar, (err) => {
+                        if (err) throw err;
+                        console.log("Your team page has been created!");
+                      })
                     break;
                 default:
-                    // do other stuff
                     break;
             }
         })
@@ -193,13 +202,3 @@ promptManager();
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
