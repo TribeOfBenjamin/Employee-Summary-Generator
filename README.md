@@ -23,7 +23,7 @@ I created a command line application which displays a software engineering team 
         
 
 ## Usage
-`node app.js`  
+`node app.js`    
 Upon competion open team.html in the output folder to view your newly created team roster.
 
 ## License
