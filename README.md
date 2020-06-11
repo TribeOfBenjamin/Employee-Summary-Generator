@@ -27,7 +27,8 @@ I created a command line application which displays a software engineering team 
 <br><br/>
 Upon competion open team.html in the output folder to view your newly created team roster.
 <br><br/>
-![CLI](images/CLI.png)  
+![CLI](images/CLI.png)
+<br><br/>
 ![Finished HTML](images/html.png)
 
 ## License
