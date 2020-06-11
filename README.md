@@ -23,7 +23,8 @@ I created a command line application which displays a software engineering team 
         
 
 ## Usage
-`node app.js`    
+`node app.js`  
+<br><br/>
 Upon competion open team.html in the output folder to view your newly created team roster.  
 ![CLI](images/CLI.png)  
 ![Finished HTML](images/html.png)
