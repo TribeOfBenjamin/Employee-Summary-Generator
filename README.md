@@ -23,7 +23,8 @@ I created a command line application which displays a software engineering team 
         
 
 ## Usage
-
+`node app.js`
+Upon competion open team.html in the output folder to view your newly created team roster.
 
 ## License
 
@@ -34,10 +35,6 @@ This project is ISC licensed.
 
 - Benjamin Vasko
 
-- null
 
-
-![GitHub Profile Picture](https://avatars0.githubusercontent.com/u/51923340?v=4)
-                
 
 
