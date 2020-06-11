@@ -1,32 +1,47 @@
 body {
-    background-color: white;
+    background-color: #f0f0f0;
 }
 
 h1 {
     font-family: 'Permanent Marker', cursive;
-    color: white;
+    color: #38AECC;
+    font-size: 70px;
 }
 
 h2 {
     font-family: 'Permanent Marker', cursive;
+    color: #022F40;
 }
 
 .team-heading {
-    background-color: rgb(17, 17, 141);
+    background-color: #022F40;
 }
 
-h3, li {
+h3 {
+    font-family: 'Raleway', sans-serif;
+    color: #FFBF00;
+}
+
+li {
     font-family: 'Raleway', sans-serif;
 }
 
 .card-header {
-    background-color: #f7f7f7;
+    background-color: #38AECC;
 }
 
-.card-body {
-    background-color: rgb(17, 17, 141);
+.id, .unique {
+    background-color: #EFF9FB;
 }
 
 .email {
-    background-color: #f7f7f7;
+    background-color: white;
+}
+
+a {
+    color: #FFBF00;
+}
+
+a:hover {
+    color: #B88A00;
 }
