@@ -25,7 +25,7 @@ I created a command line application which displays a software engineering team 
 ## Usage
 `node app.js`
 <br><br/>
-Upon competion open team.html in the output folder to view your newly created team roster.
+Upon completion, open team.html in the output folder to view your newly created team roster.
 <br><br/>
 ![CLI](images/CLI.png)
 <br><br/>
