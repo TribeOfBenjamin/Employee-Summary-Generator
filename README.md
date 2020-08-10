@@ -19,7 +19,7 @@ I created a command line application which displays a software engineering team 
 
 ## Installation
 
-`npm i inquirer`
+`npm i`
         
 
 ## Usage
